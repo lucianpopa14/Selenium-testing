@@ -7,18 +7,16 @@ import org.openqa.selenium.edge.EdgeDriver;
 public class FirstTest {
     @Test
     public void firstTest() throws InterruptedException {
-        System.setProperty("webdriver.edge.driver", "C:\\Users\\thinkpad\\IdeaProjects\\drivers\\msedgedriver.exe");
+        System.setProperty("webdriver.edge.driver", "C:\\Users\\thinkpad\\projects\\drivers\\msedgedriver.exe");
         WebDriver driver = new EdgeDriver();
         driver.navigate().to("https://endava.com");
         driver.findElement(By.id("onetrust-reject-all-handler")).click();
-        WebElement menu = driver.findElement(By.id("menu-open-icon"));
-        menu.click();
-        WebElement contactForm = driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div[2]/bq-button"));
-        contactForm.click();
-        WebElement phoneNumber = driver.findElement(By.xpath("/html/body/div[2]/div/div/section[1]/div/div/div/div[2]/div/div[2]/span"));
-        System.out.println(phoneNumber.getText());
+        driver.findElement(By.id("menu-open-icon")).click();
+        driver.findElement(By.id("hs_cos_wrapper_Lets_Connect_button")).click();
+        String phoneNumber = driver.findElement(By.xpath("//*[@id=\"hs_cos_wrapper_Contact_us_hero_module\"]/div/div/div/div[2]/div/div[2]/span")).getText();
+        System.out.println("Endava's phone number is: " + phoneNumber);
 
-        Thread.sleep(5000);
+        Thread.sleep(1500);
         driver.quit();
 
     }
